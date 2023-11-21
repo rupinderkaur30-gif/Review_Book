@@ -1,0 +1,22 @@
+<h1><%= @book.title %></h1>
+<h3>By <%= @book.author %></h3>
+<p>Genre: <%= @book.genre %></p>
+<p>Years Published: <%= @book.years_published %></p>
+
+
+<%= form_for [@book, @review] do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content, cols: 30, rows: 10 %>
+    <%= f.submit  %>
+    <% end %>
+    <% @book.reviews.each do |review|%>
+         <p> Review: <%= review.content %></p>
+        <p> Name: <%= review.user.name %></p>
+          <%= button_to "Edit Review", edit_review_path(review), method: :get %><br>
+          <%= button_to "Delete Review", review, method: :delete %>
+         <% end %>
+       
+
+<%= link_to "Edit #{@book.title.titleize}", edit_book_path(@book), method: :get %>
+
+<%= button_to "Shred #{@book.title}", book_path, method: :delete %>

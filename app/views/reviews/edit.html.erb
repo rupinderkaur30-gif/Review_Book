@@ -1,0 +1,5 @@
+<%= form_for [@book, @review] do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content, cols: 30, rows: 10 %>
+    <%= f.submit  %>
+    <% end %>
